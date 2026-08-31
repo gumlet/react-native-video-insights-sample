@@ -10,7 +10,6 @@ import { useEffect, useMemo, useState } from 'react';
 import {
   Button,
   Platform,
-  SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
@@ -21,6 +20,7 @@ import DeviceInfo from 'react-native-device-info';
 import Video from 'react-native-video';
 import { fullCustomAnalyticsConfig } from '@gumlet/insights-js-core';
 import withGumletInsights from '@gumlet/insights-react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 /** Replace with your Gumlet workspace / video-source id (required by core 3.x). */
 const WORKSPACE_ID = '<WORKSPACE_ID>';
@@ -90,7 +90,6 @@ function App() {
             muted={false}
             resizeMode="contain"
             style={styles.player}
-            useTextureView={Platform.OS === 'android'}
             onError={error => {
               const err = error as { errorString?: string };
               console.warn('[demo] video error', error);
